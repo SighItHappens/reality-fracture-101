@@ -414,6 +414,17 @@ h2 + .section-sub { margin-top: 0; }
   margin-right: 2px;
 }
 
+/* Hybrid mana symbols (Mana-font .ms-cost circles, e.g. {W/U}) */
+.hyb {
+  font-size: 1.3rem;
+  margin-right: .25rem;
+  vertical-align: middle;
+}
+
+.cost .hyb, .cm-meta .hyb { font-size: 1rem; }
+
+.rules .hyb, .cm-text .hyb, .notes .hyb { font-size: .95rem; }
+
 .cost .pip { width: 1rem; height: 1rem; font-size: .62rem; margin-right: 3px; }
 
 /* ---------- Pair accents ---------- */

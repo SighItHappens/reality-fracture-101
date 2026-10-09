@@ -508,9 +508,16 @@
   }[ch]));
 
   // ---------- Render {W}-style mana notation as pips ----------
+  const HYBRID = {
+    'w/u': 'wu', 'w/b': 'wb', 'u/b': 'ub', 'u/r': 'ur', 'b/r': 'br',
+    'b/g': 'bg', 'g/u': 'gu', 'g/w': 'gw', 'r/g': 'rg', 'r/w': 'rw',
+  };
   const toPips = (text) => text.replace(/\{([^}]+)\}/g, (_, sym) => {
-    if (sym === 'T') return '<i class="pip t"><i class="ms ms-tap"></i></i>';
-    const kind = 'WUBRG'.includes(sym) ? sym.toLowerCase() : (sym === 'X' ? 'x' : 'c');
+    const s = sym.toLowerCase();
+    if (s === 't') return '<i class="pip t"><i class="ms ms-tap"></i></i>';
+    const hyb = HYBRID[s];
+    if (hyb) return `<i class="ms ms-cost ms-${hyb} hyb"></i>`;
+    const kind = 'WUBRG'.includes(sym) ? sym.toLowerCase() : (s === 'x' ? 'x' : 'c');
     const glyph = 'wubrg'.includes(kind) ? `<i class="ms ms-${kind}"></i>` : sym;
     return `<i class="pip ${kind}">${glyph}</i>`;
   });
